@@ -1,0 +1,27 @@
+{
+  "name": "jwt-pizza",
+  "version": "1.0.0",
+  "description": "[![CI Pipeline](https://github.com/mcottle1/jwt-pizza/actions/workflows/ci.yml/badge.svg)](https://github.com/mcottle1/jwt-pizza/actions/workflows/ci.yml)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "test": "playwright test",
+    "test:coverage": "nyc --reporter=json-summary --reporter=text playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^22.7.5",
+    "nyc": "^17.1.0",
+    "playwright-test-coverage": "^1.2.12",
+    "vite": "^5.4.8",
+    "vite-plugin-istanbul": "^6.0.2"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
