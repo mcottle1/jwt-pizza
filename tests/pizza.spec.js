@@ -116,5 +116,27 @@ test('about', async ({ page }) => {
 });
 
 test('adminDashboard', async ({ page }) => {
-  
+  await page.route('*/**/api/auth', async (route) => {
+    const loginReq = { email: 'a@jwt.com', password: 'admin' };
+    const loginRes = { user: { id: 3, name: 'Kai Chen', email: 'a@jwt.com', roles: [{ role: 'admin' }] }, token: 'abcdef' };
+    expect(route.request().method()).toBe('PUT');
+    expect(route.request().postDataJSON()).toMatchObject(loginReq);
+    await route.fulfill({ json: loginRes });
+  });
+
+  await page.goto('/');
+
+  await page.getByRole('link', { name: 'Login' }).click();
+
+  // Login
+  await page.getByPlaceholder('Email address').click();
+  await page.getByPlaceholder('Email address').fill('a@jwt.com');
+  await page.getByPlaceholder('Email address').press('Tab');
+  await page.getByPlaceholder('Password').fill('admin');
+  await page.getByRole('button', { name: 'Login' }).click();
+
+  // Go to admin dashboard
+  await page.goto('/admin-dashboard');
+
+  await expect(page.getByText("Mama Ricci's kitchen")).toBeVisible();
 });
