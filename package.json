@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "build": "vite build",
     "dev": "vite",
     "test": "playwright test",
     "test:coverage": "nyc --reporter=json-summary --reporter=text playwright test"
