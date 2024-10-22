@@ -52,6 +52,7 @@ class HttpPizzaService implements PizzaService {
     const { user, token } = await this.callEndpoint('/api/auth', 'POST', { name, email, password });
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);
+    console.log(pizzaServiceUrl);
     return Promise.resolve(user);
   }
 
