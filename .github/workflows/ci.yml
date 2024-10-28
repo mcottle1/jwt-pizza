@@ -55,6 +55,9 @@ jobs:
     permissions:
       id-token: write
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://pizza.fall2024-jwt-pizza.click/
     env:
       version: ${{needs.build.outputs.version}}
     steps:
